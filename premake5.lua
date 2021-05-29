@@ -1,7 +1,7 @@
 
 workspace "GameEngine"
 	architecture "x64"
-
+	startproject "Sandbox"
 	configurations
 	{
 		"Debug",
@@ -74,6 +74,7 @@ project "Sandbox"
 
 	includedirs
 	{
+		"GameEngine/vendors/spdlog/include",
 		"GameEngine/src"
 	}
 
