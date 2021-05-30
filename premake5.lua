@@ -27,6 +27,7 @@ project "GameEngine"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendors/spdlog/include"
 	}
 
