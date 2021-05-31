@@ -1,3 +1,5 @@
+#include "mepch.h"
+
 #include "Application.h"
 #include "Engine/Log.h"
 #include "Engine/Events/ApplicationEvent.h"

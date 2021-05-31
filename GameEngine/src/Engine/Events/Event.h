@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Engine/Core.h"
-#include <string>
-#include <functional>
 
 namespace Engine {
 	// Events are currently blocking, ie when an event occurs, immediatly dispatched and dealt with.
