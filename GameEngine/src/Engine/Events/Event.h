@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/Core.h"
+#include "mepch.h"
 
 namespace Engine {
 	// Events are currently blocking, ie when an event occurs, immediatly dispatched and dealt with.

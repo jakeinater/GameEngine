@@ -11,6 +11,12 @@ workspace "GameEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "GameEngine/vendors/GLFW/include"
+
+include "GameEngine/vendors/GLFW"
+
 project "GameEngine"
 	location "GameEngine"
 	kind "SharedLib"
@@ -20,7 +26,7 @@ project "GameEngine"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "mepch.h"
-	pchsource "GameEngine/src/mepch.cpp"
+	pchsource "GameEngine/src/Platform/mepch.cpp"
 
 	files
 	{
@@ -31,7 +37,15 @@ project "GameEngine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendors/spdlog/include"
+		"%{prj.name}/src/Platform",
+		"%{prj.name}/vendors/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -51,7 +65,10 @@ project "GameEngine"
 		}
 
 	filter "configurations:Debug"
-		defines "ME_DEBUG"
+		defines {
+			"ME_DEBUG",
+			"ME_ENABLE_ASSERTS"
+		}
 		symbols "On"
 	
 	filter "configurations:Release"
@@ -79,7 +96,8 @@ project "Sandbox"
 	includedirs
 	{
 		"GameEngine/vendors/spdlog/include",
-		"GameEngine/src"
+		"GameEngine/src",
+		"GameEngine/src/Platform"
 	}
 
 	links "GameEngine"
