@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 	int a = 5;
 	ME_INFO("Initialized log! Var={0}", a);
 
-	auto app = Engine::CreateApplication();
+	Engine::Application* app = Engine::CreateApplication();
 	app->Run();
 	delete app;
 }

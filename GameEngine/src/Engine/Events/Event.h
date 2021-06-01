@@ -35,7 +35,6 @@ virtual const char* GetName() const override { return #type; } //stringizing ope
 
 	class MYENG_API Event
 	{
-		friend class EventDispatcher;
 	public:
 		//interface
 		virtual EventType GetEventType() const = 0; //pure virtual
@@ -48,7 +47,6 @@ virtual const char* GetName() const override { return #type; } //stringizing ope
 			return GetCategoryFlags() & category; //bitwise and, takes in a category (bitshifted 1), and performs & to check if its a member
 			// 0 if false, not 0 if true
 		}
-	protected:
 		bool m_Handled = false;
 	};
 
