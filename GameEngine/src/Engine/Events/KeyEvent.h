@@ -14,6 +14,7 @@ namespace Engine {
 	protected:
 		KeyEvent(int keycode)
 			: m_KeyCode(keycode) {}
+	
 		int m_KeyCode;
 	};
 

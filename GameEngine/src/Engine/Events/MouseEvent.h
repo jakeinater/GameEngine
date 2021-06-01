@@ -65,7 +65,7 @@ namespace Engine {
 		int m_Button;
 	};
 
-	class MYENG_API MouseButtonPressedEvent : MouseButtonEvent
+	class MYENG_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -81,7 +81,7 @@ namespace Engine {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class MYENG_API MouseButtonReleasedEvent : MouseButtonEvent
+	class MYENG_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)
