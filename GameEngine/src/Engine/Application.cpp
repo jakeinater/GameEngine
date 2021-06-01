@@ -1,7 +1,6 @@
 #include "mepch.h"
 
 #include "Application.h"
-#include "Engine/Events/ApplicationEvent.h"
 
 #include <GLFW/glfw3.h>
 
@@ -22,7 +21,10 @@ namespace Engine {
 
 	void Application::OnEvent(Event& e)
 	{
-		ME_CORE_INFO("{0}", e);
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		ME_CORE_TRACE("{0}", e);
 	}
 
 	void Application::Run()
@@ -33,5 +35,11 @@ namespace Engine {
 			glClear(GL_COLOR_BUFFER_BIT);
 			m_Window->OnUpdate();
 		}
+	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
 	}
 }
